@@ -3,11 +3,11 @@
 :root {
     --color-primary: rgb(97, 134, 189);
     --color-primary-darker: rgb(49, 92, 128);
-    --color-primary-dark: hsl(330, 100%, 70%);
+    --color-primary-dark: hsl(204, 100%, 32%);
     --color-primary-lighter: azure;
-    --color-primary-light: aliceblue;
-    --color-input-focus: rgb(204, 0, 102);
-    --color-input-focus-border: #4d0026;
+    --color-primary-light: rgb(163, 173, 182);
+    --color-input-focus: rgb(255, 255, 255);
+    --color-input-focus-border: black;
 }
 
 .sidebar__inner{

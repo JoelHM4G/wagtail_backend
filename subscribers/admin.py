@@ -1,11 +1,12 @@
 from django.contrib import admin
 from wagtail.contrib.modeladmin.helpers import ButtonHelper
+from wagtail.contrib.modeladmin.options import ModelAdmin, ModelAdminGroup, modeladmin_register
 
 from wagtail.contrib.modeladmin.options import(
     ModelAdmin,
     modeladmin_register
 )
-from .models import Subscribers
+from .models import Hobbies, Religion, Subscribers
 
 class SubscriberButtonHelper(ButtonHelper):
 
@@ -52,7 +53,32 @@ class SubscriberAdmin(ModelAdmin):
     menu_order=290
     add_to_settings_menu=False
     exclude_from_explorer=False
-    list_display=("email","full_name")
+    list_display=("email","full_name","religion","getHobbies")
+
     search_fields=("email","full_name")
     button_helper_class = SubscriberButtonHelper
-modeladmin_register(SubscriberAdmin)
+class ReligionAdmin(ModelAdmin):
+    model=Religion
+    menu_label="Religion"
+    menu_icon="placeholder"
+    menu_order=290
+    add_to_settings_menu=False
+    exclude_from_explorer=False
+    list_display=("name",)
+    search_fields=("name")
+class HobbiesAdmin(ModelAdmin):
+    model=Hobbies
+    menu_label="Hobbies"
+    menu_icon="placeholder"
+    menu_order=290
+    add_to_settings_menu=False
+    exclude_from_explorer=False
+    list_display=("name",)
+    search_fields=("name")
+    
+# Configuración de menú principal  donde se agregan los distintos sub menu
+class PersonGroup(ModelAdminGroup):
+    menu_label = 'Personas'
+    items = (SubscriberAdmin, ReligionAdmin,HobbiesAdmin)
+
+modeladmin_register(PersonGroup)
