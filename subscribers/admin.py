@@ -76,7 +76,7 @@ class HobbiesAdmin(ModelAdmin):
     list_display=("name",)
     search_fields=("name")
     
-# Configuración de menú principal  donde se agregan los distintos sub menu
+# Configuración de menú principal  donde se agregan los distintos sub menú como items
 class PersonGroup(ModelAdminGroup):
     menu_label = 'Personas'
     items = (SubscriberAdmin, ReligionAdmin,HobbiesAdmin)
